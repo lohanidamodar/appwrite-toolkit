@@ -129,7 +129,7 @@ async function generateTeams(appwrite, users) {
       const team = teams[Math.floor(Math.random() * teams.length)];
 
       await teamsClient
-        .createMembership(team.$id, ["owner"], undefined, undefined, user.$id)
+        .createMembership(team.$id, ["owner"], 'http://localhost', undefined, user.$id)
         .then(() => {
           bar.tick();
         });
