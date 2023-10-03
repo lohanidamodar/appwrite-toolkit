@@ -29,6 +29,11 @@ module.exports = async function () {
     projectName: "Test Project",
   };
 
+
+  if (!useDefaults) {
+    config = await createCustomConfig();
+  }
+
   try {
     cookieJar.console = await createAdminCookies(
       config.endpoint,
@@ -38,10 +43,6 @@ module.exports = async function () {
   } catch (exception) {
     console.log(exception);
     accountExists = false;
-  }
-
-  if (!useDefaults) {
-    config = await createCustomConfig();
   }
 
   if (!accountExists) {
@@ -101,7 +102,7 @@ module.exports = async function () {
       projectId: config.projectId,
       name: config.projectName,
       teamId: config.teamId,
-      region: "default",
+      region: "eu-de",
     }),
   });
 
